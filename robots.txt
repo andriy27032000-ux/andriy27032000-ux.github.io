@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://andriy27032000-ux.github.io/sitemap.xml
+Sitemap: https://vborg.com.ua/sitemap.xml
