@@ -9,7 +9,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#2140a8">
 <meta name="color-scheme" content="light">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-qKRH1DdJdnDjYv0inwcEbOD+PEaSSd7s++YQgxkIcoU='; style-src 'unsafe-inline'; img-src 'self' data:; connect-src https://bafzvncwbfjqgbuchdkh.supabase.co; base-uri 'self'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-WR7D6yto5KO6HZSBj09pOmfRDw0zCjh1rkamhJ4Ybw8='; style-src 'unsafe-inline'; img-src 'self' data:; connect-src https://bafzvncwbfjqgbuchdkh.supabase.co; base-uri 'self'; form-action 'none'; object-src 'none'">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="uk_UA">
@@ -317,8 +317,8 @@ footer a { color: var(--muted); }
     <div id="contacts-box" hidden><p style="margin-bottom:10px"><b>Підтримка</b></p><div class="contacts" id="contacts"></div></div>
     <div class="links">
       <a href="/zoshyt/#/login">Вхід</a>
-      <a href="/zoshyt/terms.html">Умови користування</a>
-      <a href="/zoshyt/privacy.html">Конфіденційність</a>
+      <a href="/zoshyt/#/doc/terms" id="doc-terms" hidden>Умови користування</a>
+      <a href="/zoshyt/#/doc/privacy" id="doc-privacy" hidden>Конфіденційність</a>
     </div>
   </div>
 </footer>
@@ -394,6 +394,9 @@ footer a { color: var(--muted); }
     if (p.support_email) links.push(['mailto:' + p.support_email, p.support_email]);
     links.forEach(function (l) { var a = document.createElement('a'); a.href = l[0]; a.textContent = l[1]; if (/^https/.test(l[0])) a.rel = 'noopener'; box.appendChild(a); });
     if (links.length) document.getElementById('contacts-box').hidden = false;
+    // умови й конфіденційність — лише коли їхній текст опубліковано в адмінці
+    var docs = p.docs || {};
+    ['terms', 'privacy'].forEach(function (k) { var a = document.getElementById('doc-' + k); if (a && docs[k]) a.hidden = false; });
   }).catch(function () {});
 })();
 </script>
